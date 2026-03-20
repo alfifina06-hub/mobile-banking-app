@@ -18,11 +18,11 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey, 
+      backgroundColor: Colors.white, 
 
       appBar: AppBar(
         title: Text('Mobile Banking'),
-        backgroundColor: const Color.fromARGB(255, 42, 43, 45),
+        backgroundColor:Color.fromARGB(255, 105, 149, 233),
         actions: [
           Icon(Icons.notifications),
           SizedBox(width: 10),
@@ -38,7 +38,7 @@ class MyHomePage extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(15, 15, 15, 0),
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.blue, Colors.blue.shade300],
+                colors: [Colors.blue, const Color.fromARGB(255, 43, 116, 176)],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
@@ -59,12 +59,20 @@ class MyHomePage extends StatelessWidget {
                 Text('Saldo Anda',
                     style: TextStyle(color: Colors.white70, fontSize: 14)),
                 SizedBox(height: 4),
-                Text('Rp 10.000.000',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold)),
-                SizedBox(height: 15),
+                Row(
+                  children: [
+                    Text('Rp 10.000.000',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold)),
+                    SizedBox(width: 10),
+                    Icon(Icons.visibility_off, color: Colors.white70, size: 16),
+                    SizedBox(width: 4),
+                    Text('Sembunyikan',
+                        style: TextStyle(color: Colors.white70, fontSize: 12)),
+                  ],
+                ),
               ],
             ),
           ),
@@ -73,30 +81,52 @@ class MyHomePage extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween, // ❗ huruf kecil
+              mainAxisAlignment: MainAxisAlignment.spaceBetween, 
               children: [
                 menu(Icons.send, 'Transfer'),
-                menu(Icons.qr_code, 'Qris'),
                 menu(Icons.account_balance_wallet, 'BRIVA'),
-                menu(Icons.money, 'Topup'),
+                menu(Icons.phone_android, "Pulsa"),
+                menu(Icons.monetization_on, 'PDAM'),
+
               ],
             ),
           ),
+           
+           Padding(padding:   EdgeInsets.symmetric(horizontal: 15), 
+           child: TextField(
+            style: TextStyle(color: Colors.white),
+            cursorColor: Colors.white,
+            decoration: InputDecoration(
+              hintText: "Cari layanan, produk, atau promo",
+              hintStyle: TextStyle(color: Colors.white70),
+              filled: true,
+              fillColor: Colors.blue.shade300,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(30),
+                borderSide: BorderSide.none,
+              ),
+              prefixIcon: Icon(Icons.search, color: Colors.white70),
+    
+            ),
+           ),
+           ),
 
           // GRID MENU
           Expanded(
             child: GridView.count(
               padding: EdgeInsets.all(15),
-              crossAxisCount: 3,
-              crossAxisSpacing: 15,
-              mainAxisSpacing: 15,
+              crossAxisCount: 4,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
               children: [
-                menuGrid(Icons.history, "Mutasi"),
-                menuGrid(Icons.phone_android, "Pulsa"),
+                menuGrid(Icons.monetization_on, "Top Up"),
+                menuGrid(Icons.local_fire_department, "BRIZZi"),
                 menuGrid(Icons.receipt, "Tagihan"),
-                menuGrid(Icons.savings, "Tabungan"),
-                menuGrid(Icons.credit_card, "Kartu Kredit"),
-                menuGrid(Icons.more_horiz, "Lainnya"),
+                menuGrid(Icons.send,    "Transfer"),
+                menuGrid(Icons.shopping_basket, "Lifestyle"),
+                menuGrid(Icons.account_balance, "Setor & Tarik Tunai"),
+                menuGrid(Icons.note, "Catatan Keuangan"),
+                menuGrid(Icons.support, "Investasi"),
               ],
             ),
           ),
@@ -131,8 +161,8 @@ class MyHomePage extends StatelessWidget {
         Container(
           padding: EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: Colors.white,
-            shape: BoxShape.circle,
+            color: Colors.blue.shade50,
+            borderRadius: BorderRadius.circular(12),
           ),
           child: Icon(icon, color: Colors.blue, size: 28),
         ),
