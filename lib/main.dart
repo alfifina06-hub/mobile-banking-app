@@ -137,10 +137,10 @@ Container(
                 Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween, 
               children: [
-                menu(Icons.send, 'Transfer'),
-                menu(Icons.account_balance_wallet, 'BRIVA'),
-                menu(Icons.phone_android, "Pulsa"),
-                menu(Icons.monetization_on, 'PDAM'),
+                menuGrid(Icons.send, 'Transfer', Colors.blue),
+                menuGrid(Icons.account_balance_wallet, 'BRIVA', Colors.green),
+                menuGrid(Icons.phone_android, "Pulsa", Colors.orange),
+                menuGrid(Icons.monetization_on, 'PDAM', Colors.red),
 
               ],
             ),
@@ -177,14 +177,14 @@ Container(
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
               children: [
-                menuGrid(Icons.monetization_on, "Top Up"),
-                menuGrid(Icons.local_fire_department, "BRIZZi"),
-                menuGrid(Icons.receipt, "Tagihan"),
-                menuGrid(Icons.send,    "Transfer"),
-                menuGrid(Icons.shopping_basket, "Lifestyle"),
-                menuGrid(Icons.account_balance, "Setor & Tarik Tunai"),
-                menuGrid(Icons.note, "Catatan Keuangan"),
-                menuGrid(Icons.support, "Investasi"),
+                menuGrid(Icons.monetization_on, "Top Up", Colors.green),
+                menuGrid(Icons.local_fire_department, "BRIZZi", Colors.greenAccent),
+                menuGrid(Icons.receipt, "Tagihan", Colors.red),
+                menuGrid(Icons.send,    "Transfer", Colors.blue),
+                menuGrid(Icons.shopping_basket, "Lifestyle", Colors.pinkAccent),
+                menuGrid(Icons.account_balance, "Setor & Tarik Tunai", Colors.indigo),
+                menuGrid(Icons.note, "Catatan Keuangan" , Colors.brown ),
+                menuGrid(Icons.support, "Investasi", Colors.yellow.shade700),
               ],
             ),
           ),
@@ -193,36 +193,21 @@ Container(
     );
   }
 
-  // MENU ATAS
-  Widget menu(IconData icon, String title) {
-    return Column(
-      children: [
-        Container(
-          padding: EdgeInsets.all(12),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            shape: BoxShape.circle,
-          ),
-          child: Icon(icon, color: Colors.blue, size: 28),
-        ),
-        SizedBox(height: 8),
-        Text(title, style: TextStyle(fontSize: 12)),
-      ],
-    );
-  }
+
+  
 
   // MENU GRID
-  Widget menuGrid(IconData icon, String title) {
+Widget menuGrid(IconData icon, String title, Color warna) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
           padding: EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: Colors.blue.shade50,
+            color: warna.withOpacity(0.15),
             borderRadius: BorderRadius.circular(12),
           ),
-          child: Icon(icon, color: Colors.blue, size: 28),
+          child: Icon(icon, color: warna, size: 28),
         ),
         SizedBox(height: 8),
         Text(title, style: TextStyle(fontSize: 12)),
