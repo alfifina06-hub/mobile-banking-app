@@ -29,11 +29,24 @@ class _MyHomePageState extends State<MyHomePage> {
       backgroundColor: Colors.white, 
 
       appBar: AppBar(
-        title: Text('Mobile Banking'),
+        title: Text(
+          'BRImo',
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),),
         backgroundColor:Color.fromARGB(255, 105, 149, 233),
         actions: [
-          Icon(Icons.notifications),
-          SizedBox(width: 10),
+          Row(
+            children: [
+              Icon(Icons.notifications_none, color: Colors.white),
+              SizedBox(width: 10),
+              Icon(Icons.headset_mic, color: Colors.white),
+              SizedBox(width: 5),
+              Text(
+                'Pusat Bantuan',
+                style: TextStyle(color: Colors.white, fontSize: 14)
+                ,)
+            ],
+          ),
+         
         ],
       ),
 
