@@ -96,42 +96,7 @@ Container(
                 color: Colors.blue.shade50,
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Saldo Rekening Utama',
-                      style: TextStyle(color: Colors.white70, fontSize: 14)),
-                  SizedBox(height: 4),
-                  Row(
-                    children: [
-                    Text(
-                      isHidden ? 'Rp **********' : 'Rp 10.000.000',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold)),
-                    SizedBox(width: 10),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          isHidden = !isHidden;
-                        });
-                      },
-                      child:
-                    Icon(Icons.visibility_off, color: Colors.white70, size: 16),),
-                    SizedBox(width: 4),
-                    Text(
-                       isHidden ? 'Sembunyikan' : 'Tampilkan',
-                        style: TextStyle(color: Colors.white70, fontSize: 12)),
-                        
-                    ],
-                    ),
-                     SizedBox(height: 4),
-                    Text(
-                     "semua Rekeningmu",
-                      style: TextStyle(color: Colors.white70, fontSize: 12)),
-                  ],
-                ),
+              
 ),
        SizedBox(height: 15),
                 Row(
