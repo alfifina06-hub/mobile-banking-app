@@ -82,22 +82,23 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
         ),
  
-        Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-        child: Container(
-            padding: EdgeInsets.symmetric(vertical: 15),
-            decoration: BoxDecoration(
+        Transform.translate(
+          offset: Offset(0, -40),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            child: Container(
+              padding: EdgeInsets.all(15),
+              decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black12.withOpacity(0.2),
-                    spreadRadius: 2,
-                    blurRadius: 5,
-                    offset: Offset(0, 3), 
+                    color: Colors.black.withOpacity(0.1),
+                    blurRadius: 10,
+                    offset: Offset(0, 5),
                   ),
                 ],
-            ),
+              ),
             child: Column(children: [
 Container(
               width: double.infinity,
@@ -120,7 +121,7 @@ Container(
                   Row(
                     children: [
                       Text(
-                        isHidden ?  'Rp **********' : 'Rp 10.000.000',
+                        isHidden ?  'Rp **********' : 'Rp 1.000.000.000',
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 24,
@@ -163,6 +164,21 @@ Container(
           ),
             ),
           ),
+        ), 
+        SizedBox(height: 10),
+
+        Container(
+          height: 55,
+          margin: EdgeInsets.symmetric(horizontal: 15),
+          child: PageView(
+            controller: PageController(viewportFraction: 0.9),
+            children: [ 
+              promoCard("Promo Lebaran: Diskon hingga 50%"),
+              promoCard("BRImo Cashback: Dapatkan cashback setiap transaksi"),
+              promoCard("Gratis Biaya Admin untuk Transfer Antar Bank"),
+            ],
+          ),
+        ),
            
            Padding(
             padding: EdgeInsets.symmetric(horizontal: 15), 
@@ -183,6 +199,7 @@ Container(
             ),
            ),
            ),
+          
 
           // GRID MENU
           GridView.count(
@@ -206,9 +223,8 @@ Container(
           ],
         ),
       ),
-       
-      
-    bottomNavigationBar: BottomNavigationBar(
+
+      bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: (index) {
           setState(() {
@@ -224,15 +240,42 @@ Container(
           BottomNavigationBarItem(icon: Icon(Icons.history), label: 'Aktivitas'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Akun'),
         ],
-      ),
+    ),
+
     );
   }
 
+      Widget promoCard(String text) {
+  return Container(
+    margin: EdgeInsets.symmetric(horizontal:5),
+    padding: EdgeInsets.symmetric(horizontal: 12),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(25),
+      gradient: LinearGradient(
+        colors: [Colors.blue, Colors.lightBlueAccent],
+      ),
+    ),
+        
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child:Text(
+            text,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+  );
+}
 
-  
 
-  // MENU GRID
-Widget menuGrid(IconData icon, String title, Color warna) {
+
+       
+      
+    
+  Widget menuGrid(IconData icon, String title, Color warna) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
