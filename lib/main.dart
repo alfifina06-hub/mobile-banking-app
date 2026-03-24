@@ -50,43 +50,43 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
 
-      body: Column(
-        children: [
-
-          // HEADER
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.fromLTRB(15, 15, 15, 0),
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Colors.blue, const Color.fromARGB(255, 43, 116, 176)],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20),
-              ),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('Halo, Alfina',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold)),
-                
-              ],
-            ),
-          ),
-
-          // MENU ATAS
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-            child: Container(
-              padding: EdgeInsets.symmetric(vertical: 15),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: 250,
+              width: double.infinity,
               decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/lebaran.jpg'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            
+            child: Container(
+              padding: EdgeInsets.fromLTRB(15, 40, 15, 20),
+              color: Colors.black.withOpacity(0.3),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Halo, Alfina',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ], 
+          ),
+            ),
+        ),
+ 
+        Padding(
+        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+        child: Container(
+            padding: EdgeInsets.symmetric(vertical: 15),
+            decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
@@ -185,8 +185,9 @@ Container(
            ),
 
           // GRID MENU
-          Expanded(
-            child: GridView.count(
+          GridView.count(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
               padding: EdgeInsets.all(15),
               crossAxisCount: 4,
               crossAxisSpacing: 10,
@@ -202,9 +203,11 @@ Container(
                 menuGrid(Icons.support, "Investasi", Colors.yellow.shade700),
               ],
             ),
-          ),
-        ],
+          ],
+        ),
       ),
+       
+      
     bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: (index) {
